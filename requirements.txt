@@ -1,0 +1,8 @@
+PyMuPDF
+beautifulsoup4
+pymupdf4llm
+requests
+langchain
+uvicorn
+fastapi
+chromadb
