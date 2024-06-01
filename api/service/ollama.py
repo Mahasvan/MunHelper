@@ -6,7 +6,7 @@ from langchain.prompts import (
     ChatPromptTemplate,
 )
 
-from .create_retriever import Retriever
+from .retriever import Retriever
 from .utils import system_template_str
 from . import shell
 
