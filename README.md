@@ -31,7 +31,7 @@ No more searching through hundreds of pages of documents to find resolutions aff
       ```
   - Start the API
     - ```shell
-        python app.py
+      python app.py
       ```
   - Access the API
     - ```shell
