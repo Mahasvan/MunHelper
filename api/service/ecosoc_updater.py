@@ -40,6 +40,7 @@ class EcosocUpdater:
         self.regex_images = re.compile(r"!\[.*\]\(.*\)")
         self.regex_line_breaks = re.compile(r"(\*+)?([_-]{2,})(\*+)?")
         self.regex_extra_lines = re.compile(r"\n{3,}")
+        # todo: fix "-----\n\n\n-----\n\n\n-----\n\n\n-----"
 
         self.illegal = r"""<>:"/\|?*"""
 
