@@ -16,9 +16,7 @@ services:
   chromadb:
     image: chromadb/chroma:latest
     healthcheck:
-      test: ["CMD", "curl", "http://localhost:8000/docs", "-f"]
+      test: ["CMD", "curl", "http://localhost:8000/api/v1", "-f"]
       interval: 5s
       timeout: 3s
       retries: 30
-    ports:
-      - "8000:8000"
