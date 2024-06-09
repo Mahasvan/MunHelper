@@ -10,7 +10,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"ping": "I am alive!"}
 
 
 # load API Routers
@@ -24,7 +24,18 @@ for route in routes:
         module.setup(app)
         shell.print_green_message("Success!")
     except Exception as e:
-        shell.print_red_message(f"        |--- Failed: {str(e)}")
+        shell.print_red_message(f"Failed:")
+        print(e)
+
+
+"""
+Environment Variables:
+CHAT_MODEL = llama3
+OLLAMA_BASE_URL = http://localhost:11434
+CHROMA_HOST = localhost
+CHROMA_PORT = 8000
+CHROMA_COLLECTION = ecosoc
+"""
 
 if __name__ == "__main__":
     import uvicorn
