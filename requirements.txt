@@ -5,3 +5,4 @@ langchain
 uvicorn
 fastapi
 chromadb
+langchain_community
