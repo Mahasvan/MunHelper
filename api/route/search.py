@@ -5,6 +5,7 @@ from fastapi import APIRouter
 import chromadb
 
 from api.service import shell
+from api.service.retriever import Retriever
 
 router = APIRouter()
 prefix = "/search"
@@ -15,7 +16,8 @@ chroma_port = os.environ.get("CHROMA_PORT", 8000)
 client = chromadb.HttpClient(host=chroma_host, port=chroma_port)
 
 chroma_collection_name = os.environ.get("CHROMA_COLLECTION", "ecosoc")
-chroma_collection = client.get_collection(chroma_collection_name)
+
+retriever = Retriever(chroma_collection=chroma_collection_name, chroma_host=chroma_host, chroma_port=chroma_port)
 
 all_resolutions = []
 
@@ -33,7 +35,7 @@ def populate_resolutions():
 
 @router.get("/ecosoc-resolutions")
 def ecosoc_resolutions(query: str, n_results: int = 5):
-    results = chroma_collection.query(query_texts=[query], n_results=n_results)
+    results = retriever.query(query_texts=[query], n_results=n_results)
     ids = results["ids"][0]
     metadatas = results["metadatas"][0]
     dates = [x["date"] for x in metadatas]
