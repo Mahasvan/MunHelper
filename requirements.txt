@@ -1,4 +1,3 @@
-PyMuPDF
 beautifulsoup4
 pymupdf4llm
 requests
