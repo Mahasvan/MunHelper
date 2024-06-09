@@ -54,10 +54,11 @@ class ChatBot:
 
         final_string = ""
         for i in range(len(ids)):
-            final_string += (f"Symbol: {symbols[i]}\n"
+            final_string += (f"BEGIN OF EXTRACT\n\n"
+                             f"Symbol: {symbols[i]}\n"
                              f"Document Title: {titles[i]}\n"
                              f"Date: {dates[i]}\n"
-                             f"Extract: {documents[i]}\nEND OF EXTRACT\n"
+                             f"Extract:\n{documents[i]}\n\nEND OF EXTRACT\n"
                              )
         return final_string
 
