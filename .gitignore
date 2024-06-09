@@ -160,5 +160,4 @@ cython_debug/
 #.idea/
 
 # downloaded resolutions
-data/resolutions/
-data/
+api/service/ecosoc_resolutions
