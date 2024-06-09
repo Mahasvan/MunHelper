@@ -2,6 +2,7 @@ import chromadb
 
 from . import shell
 
+
 class Retriever:
     def __init__(self, chroma_collection: str, chroma_host: str = "localhost", chroma_port: int = 8000):
         self.chroma_server_ip = chroma_host
