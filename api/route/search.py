@@ -14,7 +14,8 @@ chroma_port = os.environ.get("CHROMA_PORT", 8000)
 
 client = chromadb.HttpClient(host=chroma_host, port=chroma_port)
 
-ecosoc = client.get_collection("ecosoc")
+chroma_collection_name = os.environ.get("CHROMA_COLLECTION", "ecosoc")
+chroma_collection = client.get_collection(chroma_collection_name)
 
 all_resolutions = []
 
@@ -32,7 +33,7 @@ def populate_resolutions():
 
 @router.get("/ecosoc-resolutions")
 def ecosoc_resolutions(query: str, n_results: int = 5):
-    results = ecosoc.query(query_texts=[query], n_results=n_results)
+    results = chroma_collection.query(query_texts=[query], n_results=n_results)
     ids = results["ids"][0]
     metadatas = results["metadatas"][0]
     dates = [x["date"] for x in metadatas]
