@@ -17,7 +17,7 @@ def read_root():
 routes = [x.rstrip(".py") for x in os.listdir("api/route") if x.endswith(".py") and not x.startswith("_")]
 
 for route in routes:
-    print(f"Loading {route}...")
+    shell.print_cyan_message(f"Loading {route}...")
     try:
         importlib.util.spec_from_file_location(route, f"api/route/{route}.py")
         module = importlib.import_module(f"api.route.{route}")
