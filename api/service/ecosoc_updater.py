@@ -8,7 +8,7 @@ import re
 import shutil
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-import utils, shell
+from . import utils, shell
 
 from bs4 import BeautifulSoup
 import pymupdf4llm
@@ -17,8 +17,10 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 class EcosocUpdater:
     # todo: check if all this works
-    def __init__(self, savepath: str, json_source: str = "api/service/documents/ecosoc_resolutions.json",
-                 processed_documents_source: str = "api/service/documents/ecosoc_processed_documents.json"):
+    def __init__(
+            self, savepath: str, json_source: str = "api/service/documents/ecosoc_resolutions.json",
+            processed_documents_source: str = "api/service/documents/ecosoc_processed_documents.json"
+    ):
         self.savepath = savepath
         self.json_source = json_source
         self.processed_documents_source = processed_documents_source
@@ -39,8 +41,8 @@ class EcosocUpdater:
 
         self.regex_images = re.compile(r"!\[.*\]\(.*\)")
         self.regex_line_breaks = re.compile(r"(\*+)?([_-]{2,})(\*+)?")
-        self.regex_extra_lines = re.compile(r"\n{3,}")
-        # todo: fix "-----\n\n\n-----\n\n\n-----\n\n\n-----"
+        self.regex_extra_lines_2 = re.compile(r"\n{3,}")
+        self.regex_extra_lines = re.compile(r"(-{3,}\n{3,})+-{5}")
 
         self.illegal = r"""<>:"/\|?*"""
 
@@ -146,8 +148,9 @@ class EcosocUpdater:
         for line_break in self.regex_line_breaks.findall(md_text):
             md_text = md_text.replace("".join(line_break), "")
         for extra_line in self.regex_extra_lines.findall(md_text):
-            md_text = md_text.replace(extra_line, "\n\n")
-
+            md_text = md_text.replace(extra_line, "")
+        for extra_line in self.regex_extra_lines_2.findall(md_text):
+            md_text = md_text.replace(extra_line, "")
         return md_text
 
     def _create_document(self, reso):
