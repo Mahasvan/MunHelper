@@ -69,6 +69,21 @@ Bare Metal installation instructions
     ```
 </details>
 
+## Usage
+- Before using anything, update the chromadb database
+  - If using the Documentation WebUI:
+    - Visit the API Documentation at `http://localhost:5000`
+    - Run the `/manage/update-chromadb` endpoint
+  - Otherwise, perform a GET request on the /manage/update-chromadb and wait for the resolutions to populate
+- They will now persist on local storgage.
+- If you wish to delete this, delete the `chroma-data` volume on Docker.
+  - ```shell
+    docker volume ls
+    ```
+  - ```shell
+    docker volume rm munhelper_chroma-data
+    ```
+
 <details>
 <summary>Docker build images from scratch</summary>
 
