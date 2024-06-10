@@ -6,7 +6,7 @@ No more searching through hundreds of pages of documents to find resolutions aff
 - OpenAPI-compatible API using FastAPI
 - Instant ECOSOC Resolution lookup with semantic search
 - Ability to update documents with latest resolutions
-- Integrate with Ollama for inference from resolution extracts
+- Integration with Ollama for inference from resolution extracts
 - Docker Containerization
 - Auto Update (coming soon)
 
@@ -15,13 +15,13 @@ No more searching through hundreds of pages of documents to find resolutions aff
 - Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and [Docker Compose](https://docs.docker.com/compose/install/)
   - If you want to use your GPU, follow [Ollama's instructions](https://ollama.com/blog/ollama-is-now-available-as-an-official-docker-image).
 - Start the Docker Engine
-  - Open the app on Windows/macOS
+  - Windows/macOS - Open the app.
   - [Linux instructions](https://docs.docker.com/config/daemon/start/)
 - Navigate to the project directory
   - ```shell
     cd MunHelper
     ```
-- Start the containers using docker-compose
+- Start the containers in detached mode using docker-compose
   - ```shell
      docker-compose -f docker-compose.yml up -d
     ```
@@ -58,6 +58,7 @@ Bare Metal installation instructions
   - ```shell
     ollama pull llama3
     ```
+- Set up environment variables (refer `app.py`)
 - Start the API
   - ```shell
     python app.py
