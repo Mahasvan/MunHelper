@@ -28,14 +28,16 @@ No more searching through hundreds of pages of documents to find resolutions aff
 - API is now served at `http://localhost:5000/docs`.
 
 ## Other Install Methods 
-<details>
-<summary>
-Bare Metal installation instructions
-</summary>
 
 > [!NOTE]
 > Since this method may leave residue if you decide to stop using the application.
 > I recommend using the Docker method for a cleaner installation.
+
+<details>
+
+<summary>
+Bare Metal installation instructions
+</summary>
 
 ## Installation - Bare Metal
 - Clone the repository
