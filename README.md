@@ -1,7 +1,6 @@
 # MunHelper
-Your one-stop solution for context-based UN Resolution lookup. <br>
-No more searching through hundreds of pages of documents to find resolutions affecting a particular agenda! <br> 
-
+Context-based UN Resolution lookup. <br>
+Searches through every existing ECOSOC resolution and shows relevant data and extracts.
 ## Features
 - OpenAPI-compatible API using FastAPI
 - Instant ECOSOC Resolution lookup with semantic search
@@ -43,7 +42,7 @@ No more searching through hundreds of pages of documents to find resolutions aff
     ```
 
 
-## Other Install Methods 
+## Other Installation Methods 
 
 > [!NOTE]
 > These methods may leave residue if you decide to uninstall.
