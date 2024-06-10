@@ -1,9 +1,9 @@
 import importlib.util
 import os
 
-from api.service import shell
-
 from fastapi import FastAPI
+
+from api.service import shell
 
 app = FastAPI()
 
@@ -27,7 +27,6 @@ for route in routes:
         shell.print_red_message(f"Failed:")
         print(e)
 
-
 """
 Environment Variables:
 CHAT_MODEL = llama3
@@ -39,4 +38,5 @@ CHROMA_COLLECTION = ecosoc
 
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run(app, host="0.0.0.0", port=5000)

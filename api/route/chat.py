@@ -1,12 +1,11 @@
 import os
 
+import requests
 from fastapi import APIRouter
 from fastapi.responses import StreamingResponse
 
 from api.service import shell
 from api.service.ollama import ChatBot
-
-import requests
 
 router = APIRouter()
 prefix = "/chat"

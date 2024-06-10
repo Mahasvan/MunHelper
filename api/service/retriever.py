@@ -1,9 +1,9 @@
+from typing import List
+
 import chromadb
 from chromadb.config import Settings
 
 from . import shell
-
-from typing import List
 
 settings = Settings(
     anonymized_telemetry=False
@@ -13,6 +13,7 @@ settings = Settings(
 class Retriever:
     # make it a singleton
     _instance = None
+
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
             cls._instance = super(Retriever, cls).__new__(cls)

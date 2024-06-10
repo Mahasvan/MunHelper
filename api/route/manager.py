@@ -4,7 +4,6 @@ from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
 from api.service import shell
-
 from api.service.chromadb_updater import ChromaDBUpdater
 from api.service.ecosoc_updater import EcosocUpdater
 
@@ -61,10 +60,10 @@ def update_chromadb():
 
 @router.get("/update-ecosoc")
 def update_ecosoc(
-    skip_update_store: bool = False,
-    skip_download_resolutions: bool = False,
-    skip_process_resolutions: bool = False,
-    delete_downloaded_pdfs: bool = False):
+        skip_update_store: bool = False,
+        skip_download_resolutions: bool = False,
+        skip_process_resolutions: bool = False,
+        delete_downloaded_pdfs: bool = False):
     SAVEPATH = os.path.join(current_file_path[0], "ecosoc_resolutions")
     result = {
         "cwd": os.getcwd(),
@@ -82,11 +81,12 @@ def update_ecosoc(
         result["error"] = str(e)
         result["success"] = False
         return JSONResponse(content=result, status_code=500)
-    
+
     try:
         if not skip_update_store:
             status = updater.update_store()
-        else: status = 0
+        else:
+            status = 0
     except Exception as e:
         result["error"] = str(e)
         result["success"] = False
@@ -118,7 +118,7 @@ def update_ecosoc(
 
     result["process_resolutions"] = True
     if skip_process_resolutions: result["process_resolutions"] = False
-    
+
     result["delete_downloaded_pdfs"] = delete_downloaded_pdfs
 
     if delete_downloaded_pdfs:

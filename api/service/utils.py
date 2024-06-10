@@ -1,5 +1,6 @@
-from bs4.element import ResultSet, PageElement
 from urllib.parse import urlparse
+
+from bs4.element import ResultSet, PageElement
 
 system_template_str = \
     """Your job is to refer the ECOSOC resolution document extracts given in the context and answer the questions.

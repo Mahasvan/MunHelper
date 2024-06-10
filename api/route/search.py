@@ -2,7 +2,6 @@ import json
 import os
 
 from fastapi import APIRouter
-import chromadb
 
 from api.service import shell
 from api.service.retriever import Retriever
@@ -66,6 +65,7 @@ def ecosoc_resolutions(query: str, n_results: int = 5):
 @router.get("/all-resolutions")
 def get_all_resolutions():
     return all_resolutions
+
 
 def setup(app):
     populate_resolutions()

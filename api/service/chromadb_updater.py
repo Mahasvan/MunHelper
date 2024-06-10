@@ -1,12 +1,12 @@
+import json
 import os
 
 import chromadb
 
-import json
-
 from . import shell
 
 settings = chromadb.config.Settings(anonymized_telemetry=False)
+
 
 class ChromaDBUpdater:
     def __init__(self, chroma_collection: str, chroma_host: str = "localhost", chroma_port: int = 8000):

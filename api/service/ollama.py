@@ -1,14 +1,14 @@
-from langchain_community.llms import Ollama
 from langchain.prompts import (
     PromptTemplate,
     SystemMessagePromptTemplate,
     HumanMessagePromptTemplate,
     ChatPromptTemplate,
 )
+from langchain_community.llms import Ollama
 
+from . import shell
 from .retriever import Retriever
 from .utils import system_template_str
-from . import shell
 
 
 class ChatBot:

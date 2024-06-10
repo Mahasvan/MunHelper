@@ -1,18 +1,16 @@
-import sys
-import urllib.request
-
-import os
 import json
-import requests
+import os
 import re
 import shutil
+import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-from . import utils, shell
-
-from bs4 import BeautifulSoup
 import pymupdf4llm
+import requests
+from bs4 import BeautifulSoup
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+from . import utils, shell
 
 
 class EcosocUpdater:
