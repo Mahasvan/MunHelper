@@ -160,4 +160,4 @@ cython_debug/
 #.idea/
 
 # downloaded resolutions
-api/service/ecosoc_resolutions
+api/route/ecosoc_resolutions
