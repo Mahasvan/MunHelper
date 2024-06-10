@@ -1,7 +1,7 @@
 # Use an appropriate base image
 FROM ollama/ollama:latest
 
-ARG OLLAMA_MODEL=llama3:8b
+ARG OLLAMA_MODEL=gemma:2b
 ARG OLLAMA_PORT=11434
 
 # Set the working directory
