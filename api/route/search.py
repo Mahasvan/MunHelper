@@ -13,8 +13,6 @@ prefix = "/search"
 chroma_host = os.environ.get("CHROMA_HOST", "localhost")
 chroma_port = os.environ.get("CHROMA_PORT", 8000)
 
-client = chromadb.HttpClient(host=chroma_host, port=chroma_port)
-
 chroma_collection_name = os.environ.get("CHROMA_COLLECTION", "ecosoc")
 
 retriever = Retriever(chroma_collection=chroma_collection_name, chroma_host=chroma_host, chroma_port=chroma_port)
