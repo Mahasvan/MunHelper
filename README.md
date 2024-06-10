@@ -30,7 +30,7 @@ No more searching through hundreds of pages of documents to find resolutions aff
 ## Other Install Methods 
 
 > [!NOTE]
-> Since this method may leave residue if you decide to stop using the application.
+> These methods may leave residue if you decide to uninstall.
 > I recommend using the Docker method for a cleaner installation.
 
 <details>
