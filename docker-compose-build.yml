@@ -1,14 +1,14 @@
 name: munhelper
 services:
   api:
-    image: mahasvan/munhelper-api:latest
+    build: .
     ports:
       - "5000:5000"
     environment:
-      - CHAT_MODEL=gemma:2b
-      - OLLAMA_BASE_URL=http://ollama:11434
+      - CHAT_MODEL=${OLLAMA_MODEL}
+      - OLLAMA_BASE_URL=http://ollama:${OLLAMA_PORT}
       - CHROMA_HOST=chromadb
-      - CHROMA_PORT=8000
+      - CHROMA_PORT=${CHROMA_PORT}
       - CHROMA_COLLECTION=${CHROMA_COLLECTION}
     depends_on:
       chromadb:
@@ -30,9 +30,12 @@ services:
     volumes:
       - chroma-data:/chroma/chroma
   ollama:
-    image: mahasvan/munhelper-ollama:latest
+    build: 
+      context: ./ollama
+      args:
+        OLLAMA_MODEL: ${OLLAMA_MODEL}
     healthcheck:
-      test: ["CMD", "curl", "http://localhost:11434/", "-f"]
+      test: ["CMD", "curl", "http://localhost:${OLLAMA_PORT}/", "-f"]
       start_period: 20s
       interval: 1m
       start_interval: 1s
