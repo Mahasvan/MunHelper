@@ -34,7 +34,7 @@ Bare Metal installation instructions
 </summary>
 
 ## Installation - Bare Metal
-> [!INFO]
+> [!NOTE]
 > Since this method may leave residue if you decide to stop using the application.
 > I recommend using the Docker method for a cleaner installation.
 - Clone the repository
@@ -69,7 +69,7 @@ Bare Metal installation instructions
 <summary>Docker build images from scratch</summary>
 
 > [!WARNING]
-> Use this only if you know what you're doing/
+> Use this only if you know what you're doing.
 
 ## Run with Docker (build images from scratch)
 - Follow all steps in the [Docker Instructions](#run-with-docker) until the last step.
