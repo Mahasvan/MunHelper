@@ -78,14 +78,12 @@ Bare Metal installation instructions
     ollama pull llama3
     ```
 - Set up environment variables (refer `app.py`)
+- Change `bare_metal` variable in `app.py` to True
 - Start the API
   - ```shell
     python app.py
     ```
-- Access the API
-  - ```shell
-    http://localhost:5000/docs
-    ```
+- Access the API at `http://localhost:5000/docs` 
 
 </details>
 
