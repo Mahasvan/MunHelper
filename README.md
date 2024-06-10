@@ -9,8 +9,7 @@ Searches through every existing ECOSOC resolution and shows relevant data and ex
 - Docker Containerization
 - Auto Update (coming soon)
 
-## Run with Docker
-### This is the recommended install method.
+## Installation with Docker
 - Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and make sure [Docker Compose](https://docs.docker.com/compose/install/) is present.
   - If you want to use your GPU, follow [Ollama's instructions](https://ollama.com/blog/ollama-is-now-available-as-an-official-docker-image).
 - Start the Docker Engine
@@ -88,7 +87,7 @@ Bare Metal installation instructions
 <summary>Docker build images from scratch</summary>
 
 ## Run with Docker (build images from scratch)
-- Follow all steps in the [Docker Instructions](#run-with-docker) until the last step.
+- Follow all steps in the [Docker Instructions](#installation-with-docker) until the last step.
 - Start the containers using `docker-compose-build` instead of `docker-compose`
   - ```shell
      docker-compose -f docker-compose-build.yml up -d
