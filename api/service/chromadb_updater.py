@@ -19,7 +19,7 @@ class ChromaDBUpdater:
             return
         shell.print_green_message(f"ChromaDB client connected to {chroma_host}")
         try:
-            self.chroma_collection = self.client.get_collection(chroma_collection)
+            self.chroma_collection = self.client.get_or_create_collection(chroma_collection)
         except Exception as e:
             shell.print_red_message(f"Error occurred while loading ChromaDB collection\n{e}")
             return
