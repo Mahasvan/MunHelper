@@ -1,8 +1,14 @@
 import chromadb
+from chromadb.config import Settings
 
 from . import shell
 
 from typing import List
+
+settings = Settings(
+    anonymized_telemetry=False
+)
+
 
 class Retriever:
     # make it a singleton
@@ -15,8 +21,13 @@ class Retriever:
     def __init__(self, chroma_collection: str, chroma_host: str = "localhost", chroma_port: int = 8000):
         self.chroma_server_ip = chroma_host
         self.chroma_port = chroma_port
-        self.client = chromadb.HttpClient(host=chroma_host, port=chroma_port)
+        self.client = chromadb.HttpClient(
+            host=chroma_host,
+            port=chroma_port,
+            settings=settings
+        )
         shell.print_green_message(f"ChromaDB client connected to {chroma_host}")
+
         self.chroma_collection = self.client.get_or_create_collection(chroma_collection)
         shell.print_green_message(f"ChromaDB collection loaded: {chroma_collection}")
 

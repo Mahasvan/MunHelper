@@ -6,13 +6,14 @@ import json
 
 from . import shell
 
+settings = chromadb.config.Settings(anonymized_telemetry=False)
 
 class ChromaDBUpdater:
     def __init__(self, chroma_collection: str, chroma_host: str = "localhost", chroma_port: int = 8000):
         self.chroma_server_ip = chroma_host
         self.chroma_port = chroma_port
         try:
-            self.client = chromadb.HttpClient(host=chroma_host, port=chroma_port)
+            self.client = chromadb.HttpClient(host=chroma_host, port=chroma_port, settings=settings)
         except Exception as e:
             shell.print_red_message(f"Error occurred while connecting to ChromaDB\n{e}")
             return
