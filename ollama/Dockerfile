@@ -1,3 +1,6 @@
+## Source
+## https://github.com/ShawnHymel/hopper-chat/blob/master/servers/ollama/Dockerfile
+
 # Use an appropriate base image
 FROM ollama/ollama:latest
 
