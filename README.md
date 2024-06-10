@@ -11,7 +11,7 @@ Searches through every existing ECOSOC resolution and shows relevant data and ex
 
 ## Run with Docker
 ### This is the recommended install method.
-- Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and [Docker Compose](https://docs.docker.com/compose/install/)
+- Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and make sure [Docker Compose](https://docs.docker.com/compose/install/) is present.
   - If you want to use your GPU, follow [Ollama's instructions](https://ollama.com/blog/ollama-is-now-available-as-an-official-docker-image).
 - Start the Docker Engine
   - Windows/macOS - Open the app.
