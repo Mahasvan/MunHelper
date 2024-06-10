@@ -4,7 +4,7 @@ import chromadb
 
 import json
 
-import shell
+from . import shell
 
 
 class ChromaDBUpdater:
