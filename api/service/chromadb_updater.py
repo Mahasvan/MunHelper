@@ -7,14 +7,6 @@ from . import shell
 
 settings = chromadb.config.Settings(anonymized_telemetry=False)
 
-bare_metal = False
-"""
-Change this to True if not running on Docker. 
-"""
-if bare_metal:
-    # loads environment variables from `.env` file
-    from dotenv import load_dotenv
-    load_dotenv()
 
 class ChromaDBUpdater:
     def __init__(self, chroma_collection: str, chroma_host: str = "localhost", chroma_port: int = 8000):
