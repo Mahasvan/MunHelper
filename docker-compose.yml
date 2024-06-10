@@ -5,18 +5,37 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - CHAT_MODEL=${CHAT_MODEL}
-      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
+      - CHAT_MODEL=${OLLAMA_MODEL}
+      - OLLAMA_BASE_URL=http://ollama:${OLLAMA_PORT}
       - CHROMA_HOST=chromadb
-      - CHROMA_PORT=8000
+      - CHROMA_PORT=${CHROMA_PORT}
       - CHROMA_COLLECTION=${CHROMA_COLLECTION}
     depends_on:
       chromadb:
         condition: service_healthy
+      ollama:
+        condition: service_healthy
+
   chromadb:
     image: chromadb/chroma:latest
+    environment:
+      - ANONYMIZED_TELEMETRY=False
     healthcheck:
       test: ["CMD", "curl", "http://localhost:8000/api/v1", "-f"]
-      interval: 5s
+      start_period: 10s
+      interval: 1m
+      start_interval: 1s
       timeout: 3s
       retries: 30
+  ollama:
+    build: 
+      context: ./ollama
+      args:
+        OLLAMA_MODEL: ${OLLAMA_MODEL}
+    healthcheck:
+      test: ["CMD", "curl", "http://localhost:${OLLAMA_PORT}/", "-f"]
+      start_period: 20s
+      interval: 1m
+      start_interval: 1s
+      timeout: 30s
+      retries: 5
