@@ -1,0 +1,3 @@
+# .dockerignore
+api/route/ecosoc_resolutions
+images/
