@@ -14,19 +14,17 @@ Searches through every existing ECOSOC resolution and shows relevant data and ex
 
 ## Installation with Docker
 
-- Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and make
-  sure [Docker Compose](https://docs.docker.com/compose/install/) is present.
-    - If you want to use your GPU,
-      follow [Ollama's instructions](https://ollama.com/blog/ollama-is-now-available-as-an-official-docker-image).
+- Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and make sure [Docker Compose](https://docs.docker.com/compose/install/) is present.
+  - If you want to use your GPU, follow [Ollama's instructions](https://ollama.com/blog/ollama-is-now-available-as-an-official-docker-image).
 - Start the Docker Engine
-    - Windows/macOS - Open the app.
-    - [Linux instructions](https://docs.docker.com/config/daemon/start/)
+  - Windows/macOS - Open the app.
+  - [Linux instructions](https://docs.docker.com/config/daemon/start/)
 - Navigate to the project directory
-    - ```shell
+  - ```shell
     cd MunHelper
     ```
 - Start the containers in detached mode using docker-compose
-    - ```shell
+  - ```shell
      docker-compose -f docker-compose.yml up -d
     ```
 - API is now served at `http://localhost:5000/docs`.
@@ -34,16 +32,16 @@ Searches through every existing ECOSOC resolution and shows relevant data and ex
 ## Usage
 
 - Before using anything, update the chromadb database.
-    - If using the Documentation WebUI:
-        - Visit the API Documentation at `http://localhost:5000`.
-        - Run the `/manage/update-chromadb` endpoint.
-    - Otherwise, perform a GET request on the /manage/update-chromadb and wait for the resolutions to populate.
+  - If using the Documentation WebUI:
+    - Visit the API Documentation at `http://localhost:5000`.
+    - Run the `/manage/update-chromadb` endpoint.
+  - Otherwise, perform a GET request on the /manage/update-chromadb and wait for the resolutions to populate.
 - They will now persist on local storgage.
 - If you wish to delete this, delete the `chroma-data` volume on Docker.
-    - ```shell
+  - ```shell
     docker volume ls
     ```
-    - ```shell
+  - ```shell
     docker volume rm munhelper_chroma-data
     ```
 
@@ -62,30 +60,30 @@ Bare Metal installation instructions
 ## Installation - Bare Metal
 
 - Clone the repository
-    - ```shell
+  - ```shell
     git clone https://github.com/Mahasvan/Munhelper
     ```
 - Install the dependencies
-    - ```shell
+  - ```shell
     pip install -r requirements.txt
     ```
 - Set up the ChromaDB database
-    - Run the server using
-    - ```shell
+  - Run the server using 
+  - ```shell
     chroma run
     ```
 
-- Install Ollama and pull preferred model
-    - ```shell
+- Install Ollama and pull preferred model 
+  - ```shell
     ollama pull llama3
     ```
 - Set up environment variables (refer `app.py`)
 - Start the API
-    - ```shell
+  - ```shell
     python app.py
     ```
 - Access the API
-    - ```shell
+  - ```shell
     http://localhost:5000/docs
     ```
 
@@ -98,7 +96,7 @@ Bare Metal installation instructions
 
 - Follow all steps in the [Docker Instructions](#installation-with-docker) until the last step.
 - Start the containers using `docker-compose-build` instead of `docker-compose`
-    - ```shell
+  - ```shell
      docker-compose -f docker-compose-build.yml up -d
     ```
 
