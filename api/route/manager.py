@@ -60,7 +60,11 @@ def update_chromadb():
 
 
 @router.get("/update-ecosoc")
-def update_ecosoc(delete_downloaded_pdfs: bool = False):
+def update_ecosoc(
+    skip_update_store: bool = False,
+    skip_download_resolutions: bool = False,
+    skip_process_resolutions: bool = False,
+    delete_downloaded_pdfs: bool = False):
     SAVEPATH = os.path.join(current_file_path[0], "ecosoc_resolutions")
     result = {
         "cwd": os.getcwd(),
@@ -78,9 +82,11 @@ def update_ecosoc(delete_downloaded_pdfs: bool = False):
         result["error"] = str(e)
         result["success"] = False
         return JSONResponse(content=result, status_code=500)
-
+    
     try:
-        status = updater.update_store()
+        if not skip_update_store:
+            status = updater.update_store()
+        else: status = 0
     except Exception as e:
         result["error"] = str(e)
         result["success"] = False
@@ -92,23 +98,27 @@ def update_ecosoc(delete_downloaded_pdfs: bool = False):
         return JSONResponse(content=result)
 
     try:
-        updater.download_resolutions()
+        if not skip_download_resolutions:
+            updater.download_resolutions()
     except Exception as e:
         result["error"] = str(e)
         result["success"] = False
         return JSONResponse(content=result, status_code=500)
 
     result["download_resolutions"] = True
+    if skip_process_resolutions: result["process_resolutions"] = False
 
     try:
-        updater.process_resolutions()
+        if not skip_process_resolutions:
+            updater.process_resolutions()
     except Exception as e:
         result["error"] = str(e)
         result["success"] = False
         return JSONResponse(content=result, status_code=500)
 
     result["process_resolutions"] = True
-
+    if skip_process_resolutions: result["process_resolutions"] = False
+    
     result["delete_downloaded_pdfs"] = delete_downloaded_pdfs
 
     if delete_downloaded_pdfs:
