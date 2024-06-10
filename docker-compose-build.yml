@@ -21,7 +21,7 @@ services:
     environment:
       - ANONYMIZED_TELEMETRY=False
     healthcheck:
-      test: ["CMD", "curl", "http://localhost:8000/api/v1", "-f"]
+      test: [ "CMD", "curl", "http://localhost:8000/api/v1", "-f" ]
       start_period: 10s
       interval: 1m
       start_interval: 1s
@@ -30,12 +30,12 @@ services:
     volumes:
       - chroma-data:/chroma/chroma
   ollama:
-    build: 
+    build:
       context: ./ollama
       args:
         OLLAMA_MODEL: ${OLLAMA_MODEL}
     healthcheck:
-      test: ["CMD", "curl", "http://localhost:${OLLAMA_PORT}/", "-f"]
+      test: [ "CMD", "curl", "http://localhost:${OLLAMA_PORT}/", "-f" ]
       start_period: 20s
       interval: 1m
       start_interval: 1s
