@@ -2,11 +2,8 @@
 
 FROM ubuntu:latest
 
-# install tesseract
-RUN apt-get update
-
 # install python
-RUN apt-get install -y python3 python3-pip python3-venv git curl
+RUN apt-get update && apt-get install -y python3 python3-pip python3-venv git curl
 
 COPY . /MunHelper
 WORKDIR /MunHelper

@@ -4,7 +4,7 @@
 # Use an appropriate base image
 FROM ollama/ollama:latest
 
-ARG OLLAMA_MODEL=gemma:2b
+ARG OLLAMA_MODEL=phi:chat
 ARG OLLAMA_PORT=11434
 
 # Set the working directory
