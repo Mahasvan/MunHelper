@@ -5,15 +5,13 @@ from bs4.element import ResultSet, PageElement
 system_template_str = \
     """Your job is to refer the ECOSOC resolution document extracts given in the context and answer the questions.
 You are a MUN Prep Helper.
-Do not modify the symbols, titles, or dates in any manner.
 Be as detailed as possible, but don't make up any information that's not from the context. 
 Always quote the resolution extracts, when using information from it.
-Context is given below.
+Context is given below. Answer the query at the last.
 
 {context}
 
 Query:
-
 """
 
 
