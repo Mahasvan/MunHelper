@@ -2,6 +2,8 @@ name: munhelper
 services:
   api:
     build: .
+    image: mahasvan/munhelper-api:latest
+    container_name: api
     ports:
       - "5000:5000"
     environment:
@@ -34,6 +36,8 @@ services:
       context: ./ollama
       args:
         OLLAMA_MODEL: ${OLLAMA_MODEL}
+    image: mahasvan/munhelper-ollama:latest
+    container_name: ollama
     healthcheck:
       test: [ "CMD", "curl", "http://localhost:${OLLAMA_PORT}/", "-f" ]
       start_period: 20s
@@ -41,5 +45,18 @@ services:
       start_interval: 1s
       timeout: 30s
       retries: 5
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        BASE_CONTEXT_URL: ${BASE_CONTEXT_URL}
+        BASE_LLM_URL: ${BASE_LLM_URL}
+    image: mahasvan/munhelper-frontend:latest
+    container_name: frontend
+    ports:
+      - "8501:8501"
+    environment:
+      BASE_CONTEXT_URL: ${BASE_CONTEXT_URL}
+      BASE_LLM_URL: ${BASE_LLM_URL}
 volumes:
   chroma-data:
