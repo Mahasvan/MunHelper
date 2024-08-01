@@ -39,5 +39,4 @@ def get_llm_response(query):
     s = requests.Session()
     with s.get(url, headers=None, stream=True) as resp:
         for line in resp.iter_lines():
-            print(line.decode('utf-8'))
             yield line.decode('utf-8')
