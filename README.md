@@ -27,7 +27,8 @@ Searches through every existing ECOSOC resolution and shows relevant data and ex
   - ```shell
      docker-compose -f docker-compose.yml up -d
     ```
-- API is now served at `http://localhost:5000/docs`.
+- API is served at `http://localhost:5000/docs`.
+- Frontend is served at `http://localhost:8051`.
 
 ## Usage
 
