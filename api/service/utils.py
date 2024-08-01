@@ -3,16 +3,15 @@ from urllib.parse import urlparse
 from bs4.element import ResultSet, PageElement
 
 system_template_str = \
-    """Your job is to refer the ECOSOC resolution document extracts given in the context and answer the questions.
-You are a MUN Prep Helper.
-Be as detailed as possible, but don't make up any information that's not from the context. 
-Always quote the resolution extracts, when using information from it.
-Context is given below. Answer the query at the last.
+    """Your job is to refer the ECOSOC resolution document extracts given in the context and summarize it.
+You are a MUN Prep Helper. You will only summarize the context with respect to the search query. Do not ask questions.
 
+Be as detailed as possible, but stick to facts.
+ 
+Context is given below. 
 {context}
 
-Query:
-"""
+Search Query: """
 
 
 def get_url(table_title_entry: PageElement, reso_symbol: str, page_url: str):
