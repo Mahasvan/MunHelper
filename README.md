@@ -6,6 +6,7 @@ Searches through every existing ECOSOC resolution and shows relevant data and ex
 ## Features
 
 - OpenAPI-compatible API using FastAPI
+- Website using Streamlit
 - Instant ECOSOC Resolution lookup with semantic search
 - Ability to update documents with latest resolutions
 - Integration with Ollama for inference from resolution extracts
