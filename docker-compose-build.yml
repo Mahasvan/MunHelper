@@ -36,7 +36,7 @@ services:
       context: ./ollama
       args:
         OLLAMA_MODEL: ${OLLAMA_MODEL}
-    image: mahasvan/munhelper-ollama:latest
+    image: mahasvan/munhelper-ollama:gemma-2b
     container_name: ollama
     healthcheck:
       test: [ "CMD", "curl", "http://localhost:${OLLAMA_PORT}/", "-f" ]
@@ -58,5 +58,7 @@ services:
     environment:
       BASE_CONTEXT_URL: ${BASE_CONTEXT_URL}
       BASE_LLM_URL: ${BASE_LLM_URL}
+    depends_on:
+      - api
 volumes:
   chroma-data:

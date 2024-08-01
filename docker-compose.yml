@@ -38,5 +38,16 @@ services:
       start_interval: 1s
       timeout: 30s
       retries: 5
+
+  frontend:
+    image: mahasvan/munhelper-frontend:latest
+    container_name: frontend
+    ports:
+      - "8501:8501"
+    environment:
+      BASE_CONTEXT_URL: ${BASE_CONTEXT_URL}
+      BASE_LLM_URL: ${BASE_LLM_URL}
+    depends_on:
+      - api
 volumes:
   chroma-data:
