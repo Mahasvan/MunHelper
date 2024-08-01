@@ -38,7 +38,7 @@ for route in routes:
 
 """
 Environment Variables:
-CHAT_MODEL = llama3
+CHAT_MODEL = gemma:2b
 OLLAMA_BASE_URL = http://localhost:11434
 CHROMA_HOST = localhost
 CHROMA_PORT = 8000

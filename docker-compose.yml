@@ -30,7 +30,7 @@ services:
     volumes:
       - chroma-data:/chroma/chroma
   ollama:
-    image: mahasvan/munhelper-ollama:latest
+    image: mahasvan/munhelper-ollama:gemma-2b
     healthcheck:
       test: [ "CMD", "curl", "http://localhost:11434/", "-f" ]
       start_period: 20s
