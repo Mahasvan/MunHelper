@@ -31,13 +31,15 @@ Searches through every existing ECOSOC resolution and shows relevant data and ex
 
 ## Usage
 
-- Before using anything, update the chromadb database.
+- Before using anything, update the ChromaDB database.
   - If using the Documentation WebUI:
     - Visit the API Documentation at `http://localhost:5000`.
     - Run the `/manage/update-chromadb` endpoint.
-  - Otherwise, perform a GET request on the /manage/update-chromadb and wait for the resolutions to populate.
+  - If using the Frontend:
+    - Hold on, I'm working on something.
+  - Otherwise, perform a **GET** request on the `/manage/update-chromadb` endpoint and wait for the resolutions to populate.
 - They will now persist on local storgage.
-- If you wish to delete this, delete the `chroma-data` volume on Docker.
+- If you wish to delete this data, delete the `chroma-data` volume on Docker.
   - ```shell
     docker volume ls
     ```
@@ -84,7 +86,10 @@ Bare Metal installation instructions
     python app.py
     ```
 - Access the API at `http://localhost:5000/docs` 
-
+- Setting up the frontend
+  - Open another terminal window, and `cd` into the `frontend` folder
+  - Run `streamlit run frontend.py`
+  - Frontend is served at `http://localhost:8051`
 </details>
 
 <details>
@@ -97,5 +102,5 @@ Bare Metal installation instructions
   - ```shell
      docker-compose -f docker-compose-build.yml up -d
     ```
-
+- Make sure to read the [Usage](#usage) section.
 </details>
