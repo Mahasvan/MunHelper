@@ -1,12 +1,11 @@
 FROM python:3.9.19-bookworm
-LABEL authors="mahas"
+
+# Install dependencies
+RUN pip install streamlit requests
 
 # Set the working directory
 COPY . /app
 WORKDIR /app
-
-# Install dependencies
-RUN pip install streamlit requests
 
 EXPOSE ${PORT}
 

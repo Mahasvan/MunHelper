@@ -1,16 +1,16 @@
 import os
+import threading
 
 import requests
 from urllib.parse import quote
 
+base_url = os.environ.get("BASE_API_URL", "http://localhost:5000")
+# remove trailing forward slash if present
+base_url = base_url.rstrip("/")
 
-base_url_context = os.environ.get("BASE_CONTEXT_URL")
-if not base_url_context:
-    base_url_context = "http://localhost:5000/search/ecosoc-resolutions?query="
-
-base_url_llm = os.environ.get("BASE_LLM_URL")
-if not base_url_llm:
-    base_url_llm = "http://localhost:5000/chat/ecosoc-resolutions?query="
+base_url_context = f"{base_url}/search/ecosoc-resolutions?query="
+base_url_llm = f"{base_url}/chat/ecosoc-resolutions?query="
+base_url_update = f"{base_url}/manage/update-chromadb"
 
 
 def get_context(query):
@@ -40,3 +40,13 @@ def get_llm_response(query):
     with s.get(url, headers=None, stream=True) as resp:
         for line in resp.iter_lines():
             yield line.decode('utf-8')
+
+
+def update_chromadb():
+    res = requests.get(base_url_update)
+    return res.status_code
+
+
+def update_and_forget():
+    thread = threading.Thread(target=update_chromadb)
+    thread.start()

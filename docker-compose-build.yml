@@ -46,18 +46,13 @@ services:
       timeout: 30s
       retries: 5
   frontend:
-    build:
-      context: ./frontend
-      args:
-        BASE_CONTEXT_URL: ${BASE_CONTEXT_URL}
-        BASE_LLM_URL: ${BASE_LLM_URL}
+    build: ./frontend
     image: mahasvan/munhelper-frontend:latest
     container_name: frontend
     ports:
       - "8501:8501"
     environment:
-      BASE_CONTEXT_URL: ${BASE_CONTEXT_URL}
-      BASE_LLM_URL: ${BASE_LLM_URL}
+      BASE_API_URL: ${BASE_API_URL}
     depends_on:
       - api
 volumes:

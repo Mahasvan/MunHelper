@@ -45,8 +45,7 @@ services:
     ports:
       - "8501:8501"
     environment:
-      BASE_CONTEXT_URL: ${BASE_CONTEXT_URL}
-      BASE_LLM_URL: ${BASE_LLM_URL}
+      BASE_API_URL: ${BASE_API_URL}
     depends_on:
       - api
 volumes:
