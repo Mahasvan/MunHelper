@@ -2,7 +2,7 @@ import importlib.util
 import os
 
 from fastapi import FastAPI
-
+from fastapi.middleware.cors import CORSMiddleware
 from api.service import shell
 
 bare_metal = False
@@ -15,6 +15,13 @@ if bare_metal:
     load_dotenv()
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
