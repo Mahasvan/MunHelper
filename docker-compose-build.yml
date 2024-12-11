@@ -50,9 +50,7 @@ services:
     image: mahasvan/munhelper-frontend:latest
     container_name: frontend
     ports:
-      - "8501:8501"
-    environment:
-      BASE_API_URL: ${BASE_API_URL}
+      - "3000:3000"
     depends_on:
       - api
 volumes:
