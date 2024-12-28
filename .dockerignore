@@ -1,3 +1,6 @@
 # .dockerignore
-api/route/ecosoc_resolutions
 images/
+frontend/
+ollama/
+docker-compose.yml
+docker-compose-build.yml
