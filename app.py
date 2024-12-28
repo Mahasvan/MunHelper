@@ -5,14 +5,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.service import shell
 
-bare_metal = False
-"""
-Change this to True if not running on Docker. 
-"""
-if bare_metal:
-    # loads environment variables from `.env` file
+if not os.environ.get("IS_CONTAINER"):
+    shell.print_yellow_message("Running on bare metal. Loading environment variables from .env file...")
+    # docker-compose is configured to set IS_CONTAINER environment variable.
+    # if this variable is not set, the app is running on bare metal.
+    # so, we will load the environment variables from `.env` file.
     from dotenv import load_dotenv
     load_dotenv()
+    shell.print_cyan_message("Environment variables loaded successfully.")
+
 
 app = FastAPI()
 
@@ -45,7 +46,7 @@ for route in routes:
 
 """
 Environment Variables:
-CHAT_MODEL = gemma:2b
+CHAT_MODEL = qwen2:0.5b (or whatever is in .env)
 OLLAMA_BASE_URL = http://localhost:11434
 CHROMA_HOST = localhost
 CHROMA_PORT = 8000

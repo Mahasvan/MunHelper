@@ -78,15 +78,14 @@ Bare Metal installation instructions
 
 - Install Ollama and pull preferred model 
   - ```shell
-    ollama pull llama3
+    ollama pull llama3.2:1b
     ```
-- Set up environment variables (refer `app.py`)
-- Change `bare_metal` variable in `app.py` to True
+- Set up environment variables accordingly (refer `app.py`)
 - Start the API
   - ```shell
     python app.py
     ```
-- Access the API at `http://localhost:5000/docs` 
+- Access the API at `http://localhost:5000/docs` (or whatever port you configured)
 - Setting up the frontend
   - Open another terminal window, and `cd` into the `frontend` folder
   - Follow the instructions given [here](https://github.com/Mahasvan/MunHelper-frontend/).
@@ -102,6 +101,7 @@ Bare Metal installation instructions
 - Follow all steps in the [Docker Instructions](#installation-with-docker) until the last step.
 - Start the containers using `docker-compose-build` instead of `docker-compose`
   - ```shell
+     docker-compose -f docker-compose-build.yml build --no-cache
      docker-compose -f docker-compose-build.yml up -d
     ```
 - Make sure to read the [Usage](#usage) section.
