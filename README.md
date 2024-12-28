@@ -29,7 +29,7 @@ Searches through every existing ECOSOC resolution and shows relevant data and ex
      docker-compose -f docker-compose.yml up -d
     ```
 - API is served at `http://localhost:5000/docs`.
-- Frontend is served at `http://localhost:8051`.
+- Frontend is served at `http://localhost:3000`.
 
 ## Usage
 
@@ -90,8 +90,9 @@ Bare Metal installation instructions
 - Access the API at `http://localhost:5000/docs` 
 - Setting up the frontend
   - Open another terminal window, and `cd` into the `frontend` folder
-  - Run `streamlit run frontend.py`
-  - Frontend is served at `http://localhost:8051`
+  - Follow the instructions given [here](https://github.com/Mahasvan/MunHelper-frontend/).
+- Make sure to read the [Usage](#usage) section.
+
 </details>
 
 <details>
