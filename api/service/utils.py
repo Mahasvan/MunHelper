@@ -3,8 +3,8 @@ from urllib.parse import urlparse
 from bs4.element import ResultSet, PageElement
 
 system_template_str = \
-    """Your job is to refer the ECOSOC resolution document extracts given in the context and summarize it.
-You are a MUN Prep Helper. You will only summarize the context with respect to the search query. Do not ask questions.
+    """Your job is to refer the ECOSOC resolution document extracts given in the context and summarize it resolution-by-resolution.
+You are a MUN Prep Helper. You will only summarize each context entry with respect to the search query. Do not ask questions.
 
 Be as detailed as possible, but stick to facts.
  
