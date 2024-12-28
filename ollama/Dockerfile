@@ -1,11 +1,10 @@
 ## Source
 ## https://github.com/ShawnHymel/hopper-chat/blob/master/servers/ollama/Dockerfile
 
-# Use an appropriate base image
 FROM ollama/ollama:latest
 
-ARG OLLAMA_MODEL=gemma:2b
-ARG OLLAMA_PORT=11434
+ARG OLLAMA_MODEL
+ARG OLLAMA_PORT
 
 # Set the working directory
 WORKDIR /app
@@ -14,7 +13,6 @@ WORKDIR /app
 ENV OLLAMA_HOST 0.0.0.0:${OLLAMA_PORT}
 EXPOSE ${OLLAMA_PORT}
 
-RUN apt-get update && apt-get install -y curl
 
 # Download the model
 RUN \
@@ -23,6 +21,8 @@ RUN \
     ollama pull ${OLLAMA_MODEL} ; \
     echo "kill 'ollama serve' process" ; \
     ps -ef | grep 'ollama serve' | grep -v grep | awk '{print $2}' | xargs -r kill -9
+
+RUN apt-get update && apt-get install -y curl
 
 # Command to run the server
 ENTRYPOINT ["/bin/bash", "-c", "ollama serve"]
