@@ -34,9 +34,8 @@ Searches through every existing ECOSOC resolution and shows relevant data and ex
 ## Usage
 
 - Before using anything, update the ChromaDB database.
-  - If using the Documentation WebUI:
-    - Visit the API Documentation at `http://localhost:5000`.
-    - Run the `/manage/update-chromadb` endpoint.
+  - Visit the API Documentation at `http://localhost:5000/docs`.
+  - Run the `/manage/update-chromadb` endpoint.
   - If using the Frontend:
     - Hold on, I'm working on something.
   - Otherwise, perform a **GET** request on the `/manage/update-chromadb` endpoint and wait for the resolutions to populate.
