@@ -3,7 +3,7 @@ services:
   api:
     image: mahasvan/munhelper-api:latest
     ports:
-      - "${API_ACCESS_PORT:5000"
+      - "${API_ACCESS_PORT}:5000"
     environment:
       - CHAT_MODEL=${OLLAMA_MODEL}
       - OLLAMA_BASE_URL=http://ollama:11434
@@ -11,12 +11,12 @@ services:
       - CHROMA_PORT=8000
       - CHROMA_COLLECTION=${CHROMA_COLLECTION}
       - IS_CONTAINER=docker
+    restart: always
     depends_on:
       chromadb:
         condition: service_healthy
       ollama:
         condition: service_healthy
-
   chromadb:
     image: chromadb/chroma:latest
     environment:
@@ -28,6 +28,7 @@ services:
       start_interval: 1s
       timeout: 3s
       retries: 30
+    restart: always
     volumes:
       - chroma-data:/chroma/chroma
   ollama:
@@ -39,6 +40,7 @@ services:
       start_interval: 1s
       timeout: 30s
       retries: 5
+    restart: always
 
   frontend:
     image: mahasvan/munhelper-frontend:latest
@@ -47,5 +49,6 @@ services:
       - "3000:3000"
     depends_on:
       - api
+    restart: always
 volumes:
   chroma-data:

@@ -13,6 +13,7 @@ services:
       - CHROMA_PORT=${CHROMA_PORT}
       - CHROMA_COLLECTION=${CHROMA_COLLECTION}
       - IS_CONTAINER=docker
+    restart: always
     depends_on:
       chromadb:
         condition: service_healthy
@@ -30,6 +31,7 @@ services:
       start_interval: 1s
       timeout: 3s
       retries: 30
+    restart: always
     volumes:
       - chroma-data:/chroma/chroma
   ollama:
@@ -47,6 +49,7 @@ services:
       start_interval: 1s
       timeout: 30s
       retries: 5
+    restart: always
   frontend:
     build: ./frontend
     image: mahasvan/munhelper-frontend:latest
@@ -55,5 +58,6 @@ services:
       - "3000:3000"
     depends_on:
       - api
+    restart: always
 volumes:
   chroma-data:
