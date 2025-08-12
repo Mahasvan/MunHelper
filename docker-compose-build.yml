@@ -14,6 +14,7 @@ services:
       - CHROMA_COLLECTION=${CHROMA_COLLECTION}
       - IS_CONTAINER=docker
     restart: always
+    pull_policy: missing
     depends_on:
       chromadb:
         condition: service_healthy
@@ -34,6 +35,7 @@ services:
     restart: always
     volumes:
       - chroma-data:/chroma/chroma
+
   ollama:
     build:
       context: ./ollama
@@ -50,6 +52,8 @@ services:
       timeout: 30s
       retries: 5
     restart: always
+    pull_policy: missing
+
   frontend:
     build: ./frontend
     image: mahasvan/munhelper-frontend:latest
@@ -59,5 +63,6 @@ services:
     depends_on:
       - api
     restart: always
+    pull_policy: missing
 volumes:
   chroma-data:
