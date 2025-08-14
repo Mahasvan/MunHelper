@@ -16,8 +16,6 @@ services:
     restart: always
     pull_policy: missing
     depends_on:
-      chromadb:
-        condition: service_healthy
       ollama:
         condition: service_healthy
 
@@ -25,13 +23,13 @@ services:
     image: chromadb/chroma:latest
     environment:
       - ANONYMIZED_TELEMETRY=False
-    healthcheck:
-      test: [ "CMD", "curl", "http://localhost:8000/api/v1", "-f" ]
-      start_period: 10s
-      interval: 1m
-      start_interval: 1s
-      timeout: 3s
-      retries: 30
+    # healthcheck:
+    #   test: [ "CMD", "curl", "http://localhost:8000/api/v1", "-f" ]
+    #   start_period: 10s
+    #   interval: 1m
+    #   start_interval: 1s
+    #   timeout: 3s
+    #   retries: 30
     restart: always
     volumes:
       - chroma-data:/chroma/chroma
